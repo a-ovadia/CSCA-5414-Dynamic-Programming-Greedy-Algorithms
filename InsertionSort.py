@@ -1,5 +1,3 @@
-import random
-
 class InsertionSort:
 
     def __init__(self):
@@ -42,6 +40,3 @@ class InsertionSort:
         right_pos = data[val2]
         data[val2] = left_pos
         data[val1] = right_pos
-
-data = [1,34,5,2,6,34,5,7,2,2]
-print(InsertionSort.sortDSC(data))
