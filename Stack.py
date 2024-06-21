@@ -60,13 +60,3 @@ class Stack:
         self.top = None
         self._size = 0
 
-s = Stack()
-s.push(5)
-s.push(6)
-s.push(5)
-s.push(6)
-s.push(5)
-s.push(90)
-s.pop()
-s.print_stack()
-
