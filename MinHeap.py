@@ -111,6 +111,10 @@ class MinHeap:
     
     def size(self):
         return len(self.heap)
+    
+    def peek(self):
+        if not self.isEmpty():
+            return self.getMin()
 
 # Testing the MinHeap
 def test_min_heap():
