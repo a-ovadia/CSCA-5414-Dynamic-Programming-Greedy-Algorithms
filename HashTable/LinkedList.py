@@ -5,6 +5,9 @@ class LinkedList:
     def __init__(self) -> None:
         self.head = None
 
+    def __repr__(self) -> str:
+        return f"{self.head}"
+
     def insert(self, key, value):
         """" Inserts new element to the end of the list"""
         
