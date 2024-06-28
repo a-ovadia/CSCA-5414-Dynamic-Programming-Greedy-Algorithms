@@ -2,6 +2,8 @@ class MinHeap:
 
     def __init__(self, data = None) -> None:
         self.heap = data if data is not None else []
+        if self.heap:
+            self.heapify(self.heap)
 
     def __repr__(self) -> str:
         return f"Min-Heap of size {self.getSize()}, min = {self.getMin()}"
@@ -73,7 +75,7 @@ class MinHeap:
     
     def remove(self, index):
         # Bounds check
-        if self.getSize() <= index or index < 0 or self.getSize() == 0:
+        if index <0 or index >= len(self.heap):
             return None
         
         # Check edge case that index is the last element
@@ -81,17 +83,14 @@ class MinHeap:
             return self.heap.pop()
         
         # swap index with last element
-        else:
-            self.swap(index, self.getSize() - 1 ) #Index start at 0
-            # Store deleted element
-            remove_element = self.heap.pop()
-            # Now that we removed an element, check to make sure we have a parent to check
-            if self.getSize() <= 1:
-                # If we are left with 1 element after the pop() then we are good
-                return remove_element
-            else:
-                self.bubbleDown(index)
+        remove_element = self.heap[index]
+        self.heap[index] = self.heap.pop()
         
+        if index > 0 and self.heap[index] < self.heap[(index - 1) // 2]:
+            self.bubbleUp(index)
+        else:
+            self.bubbleDown(index)
+            
         return remove_element
     
     # Basic wrapper function to call remove() at index = 0
@@ -115,3 +114,5 @@ class MinHeap:
     def peek(self):
         if not self.isEmpty():
             return self.getMin()
+        return None
+            
